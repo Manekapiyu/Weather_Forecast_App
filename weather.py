@@ -39,12 +39,29 @@ def getWeather():
     temp = json_data['current']['temp']
     humidity = json_data['current']['humidity']
     pressure = json_data['current']['pressure']
-    wind_speed = json_data['current']['wind_speed']
+    wind = json_data['current']['wind_speed']
     description = json_data['current']['weather'][0]['description']
     
     t.config(text=(temp,"°C"))
     h.config(text=(humidity,"%"))
-    
+    p.config(text=(pressure,"hPa"))
+    w.config(text=(wind,"m/s"))
+    d.config(text=description)
+
+    #frist cell
+    day1.config(text="Monday")
+
+    #second cell
+    #third cell
+    #fouth cell
+    #fifth cell
+    #sixth cell
+    #seventh cell
+    #days
+    first=datetime.now()
+    day1.config(text=first.strftime("%A"))
+
+
 
 # App icon
 image_icon = PhotoImage(file="Images/logo.png")
@@ -131,5 +148,58 @@ w=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 w.place(x=150, y=180)
 d=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 d.place(x=150, y=200)
+
+
+#first cell
+firstFrame= Frame(rootwidth=230,height=132,bg="#282829")
+firstFrame.place(x=35,y=315)
+
+day1=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day1.place(x=100,y=5)
+
+#second cell
+secondFrame= Frame(rootwidth=70,height=115,bg="#282829")
+secondFrame.place(x=305,y=325)
+
+day2=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day2.place(x=100,y=5)
+
+#third cell
+thirdFrame= Frame(rootwidth=230,height=132,bg="#282829")
+thirdFrame.place(x=405,y=325)
+
+day3=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day3.place(x=100,y=5)
+
+#fouth cell
+fouthFrame= Frame(rootwidth=230,height=132,bg="#282829")
+fouthFrame.place(x=505,y=315)
+
+day4=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day4.place(x=100,y=5)
+
+#fifth cell
+fifthFrame= Frame(rootwidth=230,height=132,bg="#282829")
+fifthFrame.place(x=605,y=315)
+
+day5=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day5.place(x=100,y=5)
+
+#sixth cell
+sixthFrame= Frame(rootwidth=230,height=132,bg="#282829")
+sixthFrame.place(x=705,y=315)
+
+day6=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day6.place(x=100,y=5)
+
+#seventh cell
+seventhFrame= Frame(rootwidth=230,height=132,bg="#282829")
+seventhFrame.place(x=805,y=315)
+
+day7=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
+day7.place(x=100,y=5)
+
+
+
 
 root.mainloop()
