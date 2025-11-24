@@ -41,11 +41,10 @@ def getWeather():
     pressure = json_data['current']['pressure']
     wind_speed = json_data['current']['wind_speed']
     description = json_data['current']['weather'][0]['description']
-    print(temp)
-    print(humidity)
-    print(pressure)
-    print(wind_speed)
-    print(description)
+    
+    t.config(text=(temp,"°C"))
+    h.config(text=(humidity,"%"))
+    
 
 # App icon
 image_icon = PhotoImage(file="Images/logo.png")
@@ -125,12 +124,12 @@ long_lat.place(x=700, y=50)
 t=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 t.place(x=150, y=220)
 h=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
-h.place(x=150, y=220)
+h.place(x=150, y=140)
 p=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
-p.place(x=150, y=220)
+p.place(x=150, y=160)
 w=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
-w.place(x=150, y=220)
+w.place(x=150, y=180)
 d=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
-d.place(x=150, y=220)
+d.place(x=150, y=200)
 
 root.mainloop()
