@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import font
 from geopy.geocoders import Nominatim
 from timezonefinder import TimezoneFinder
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests, pytz
 from PIL import Image, ImageTk
 
@@ -49,17 +49,124 @@ def getWeather():
     d.config(text=description)
 
     #frist cell
-    day1.config(text="Monday")
+    firstdayimage=json_data['daily'][0]['weather'][0]['icon']
+    photo1=ImageTk.PhotoImage(file=f"icon/{firstdayimage}@2x.png")
+    firstimage.config(image=photo1)
+    firstimage.image=photo1
+
+    tempday1=json_data['daily'][0]['temp']['day']
+    tempnight=json_data['daily'][0]['temp']['night']
+    day1temp.config(text=f"{tempday1}°C / {tempnight}°C")
 
     #second cell
+    seconddayimage=json_data['daily'][1]['weather'][0]['icon']
+    img=(Image.open("icon/{seconddayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo2=ImageTk.PhotoImage(resize_image)
+    secondimage.config(image=photo2)
+    secondimage.image=photo2
+
+    tempday2=json_data['daily'][1]['temp']['day']
+    tempnight=json_data['daily'][1]['temp']['night']
+    day2temp.config(text=f"{tempday2}°C / {tempnight}°C")
+    
+
     #third cell
+    thirddayimage=json_data['daily'][2]['weather'][0]['icon']
+
+    img=(Image.open("icon/{thirddayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo3=ImageTk.PhotoImage(resize_image)
+    thirdimage.config(image=photo3)
+    thirdimage.image=photo2
+
+    tempday3=json_data['daily'][2]['temp']['day']
+    tempnight=json_data['daily'][2]['temp']['night']
+    day3temp.config(text=f"{tempday3}°C / {tempnight}°C")
+    
+   
+
     #fouth cell
+    fourthdayimage=json_data['daily'][3]['weather'][0]['icon']
+
+    img=(Image.open("icon/{fourthdayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo4=ImageTk.PhotoImage(resize_image)
+    forthimage.config(image=photo4)
+    forthimage.image=photo4
+
+    tempday4=json_data['daily'][3]['temp']['day']
+    tempnight=json_data['daily'][3]['temp']['night']
+    day4temp.config(text=f"{tempday4}°C / {tempnight}°C")
+  
+
     #fifth cell
+    fifthdayimage=json_data['daily'][4]['weather'][0]['icon']
+
+    img=(Image.open("icon/{fifthdayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo5=ImageTk.PhotoImage(resize_image)
+    fifthimage.config(image=photo5)
+    fifthimage.image=photo5
+
+    tempday5=json_data['daily'][4]['temp']['day']
+    tempnight=json_data['daily'][4]['temp']['night']
+    day5temp.config(text=f"{tempday5}°C / {tempnight}°C")
+
+   
+
+   
+
     #sixth cell
+    sixthdayimage=json_data['daily'][5]['weather'][0]['icon']
+
+    img=(Image.open("icon/{sixthdayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo6=ImageTk.PhotoImage(resize_image)
+    sixthimage.config(image=photo6)
+    sixthimage.image=photo6
+
+    tempday6=json_data['daily'][5]['temp']['day']
+    tempnight=json_data['daily'][5]['temp']['night']
+    day6temp.config(text=f"{tempday6}°C / {tempnight}°C")
+
+
     #seventh cell
+    seventhdayimage=json_data['daily'][6]['weather'][0]['icon']
+
+    img=(Image.open("icon/{seventhdayimage}@2x.png"))
+    resize_image=img.resize((50,50))
+    photo7=ImageTk.PhotoImage(resize_image)
+    seventhimage.config(image=photo7)
+    seventhimage.image=photo7
+
+    tempday7=json_data['daily'][6]['temp']['day']
+    tempnight=json_data['daily'][6]['temp']['night']
+    day7temp.config(text=f"{tempday7}°C / {tempnight}°C")
+    
+
     #days
+
     first=datetime.now()
     day1.config(text=first.strftime("%A"))
+
+    second = first+timedelta(days=1)
+    day2.config(text=second.strftime("%A"))
+
+    third = first+timedelta(days=2)
+    day3.config(text=third.strftime("%A"))
+
+    fourth = first+timedelta(days=3)
+    day4.config(text=fourth.strftime("%A"))
+
+    fifth = first+timedelta(days=4)
+    day5.config(text=fifth.strftime("%A"))
+
+    sixth = first+timedelta(days=5)
+    day6.config(text=sixth.strftime("%A"))
+
+    seventh = first+timedelta(days=6)
+    day7.config(text=seventh.strftime("%A"))
 
 
 
@@ -138,16 +245,17 @@ long_lat = Label(root, font=("Helvetica", 10), fg="white", bg="#57adff")
 long_lat.place(x=700, y=50)
 
 #thpwd
-t=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
+t = Label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 t.place(x=150, y=220)
-h=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
+h = Label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 h.place(x=150, y=140)
-p=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
+p = Label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 p.place(x=150, y=160)
-w=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
+w = Label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 w.place(x=150, y=180)
-d=label(root, font=('Helvetica', 11), fg="white", bg="#203243")
+d = Label(root, font=('Helvetica', 11), fg="white", bg="#203243")
 d.place(x=150, y=200)
+
 
 
 #first cell
@@ -157,12 +265,24 @@ firstFrame.place(x=35,y=315)
 day1=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day1.place(x=100,y=5)
 
+firstimage=Label(firstFrame,bg="#282829")
+firstimage.place(x=1,y=15)
+
+day1temp=Label(firstFrame,font=("arial",15),bg="#282829",fg="white")
+day1temp.place(x=100,y=50)
+
 #second cell
 secondFrame= Frame(rootwidth=70,height=115,bg="#282829")
 secondFrame.place(x=305,y=325)
 
 day2=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day2.place(x=100,y=5)
+
+secondimage=Label(secondFrame,bg="#282829")
+secondimage.place(x=7,y=20)
+
+day2temp=Label(secondFrame,font=("arial",15),bg="#282829",fg="white")
+day2temp.place(x=100,y=50)
 
 #third cell
 thirdFrame= Frame(rootwidth=230,height=132,bg="#282829")
@@ -171,12 +291,24 @@ thirdFrame.place(x=405,y=325)
 day3=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day3.place(x=100,y=5)
 
+thirdimage=Label(thirdFrame,bg="#282829")
+thirdimage.place(x=7,y=20)
+
+day3temp=Label(thirdFrame,font=("arial",15),bg="#282829",fg="white")
+day3temp.place(x=10,y=70)
+
 #fouth cell
 fouthFrame= Frame(rootwidth=230,height=132,bg="#282829")
 fouthFrame.place(x=505,y=315)
 
 day4=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day4.place(x=100,y=5)
+
+forthimage=Label(fouthFrame,bg="#282829")
+forthimage.place(x=7,y=20)
+
+day4temp=Label(fouthFrame,font=("arial",15),bg="#282829",fg="white")
+day4temp.place(x=10,y=70)
 
 #fifth cell
 fifthFrame= Frame(rootwidth=230,height=132,bg="#282829")
@@ -185,6 +317,12 @@ fifthFrame.place(x=605,y=315)
 day5=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day5.place(x=100,y=5)
 
+fifthimage=Label(fifthFrame,bg="#282829")
+fifthimage.place(x=7,y=20)
+
+day5temp=Label(fifthFrame,font=("arial",15),bg="#282829",fg="white")
+day5temp.place(x=10,y=70)
+
 #sixth cell
 sixthFrame= Frame(rootwidth=230,height=132,bg="#282829")
 sixthFrame.place(x=705,y=315)
@@ -192,12 +330,24 @@ sixthFrame.place(x=705,y=315)
 day6=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day6.place(x=100,y=5)
 
+sixthimage=Label(sixthFrame,bg="#282829")
+sixthimage.place(x=7,y=20)
+
+day6temp=Label(sixthFrame,font=("arial",15),bg="#282829",fg="white")
+day6temp.place(x=10,y=70)
+
 #seventh cell
 seventhFrame= Frame(rootwidth=230,height=132,bg="#282829")
 seventhFrame.place(x=805,y=315)
 
 day7=Label(firstFrame,font=("arial",20),bg="#282829",fg="white")
 day7.place(x=100,y=5)
+
+seventhimage=Label(seventhFrame,bg="#282829")
+seventhimage.place(x=7,y=20)
+
+day7temp=Label(seventhFrame,font=("arial",15),bg="#282829",fg="white")
+day7temp.place(x=10,y=70)
 
 
 
